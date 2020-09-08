@@ -61,6 +61,7 @@ export class UserController {
             const savedUser = currentUser.save(userUpdate)
             return res.status(200).json({success: true, message: "User updated.", savedUser})
         } catch (err) {
+            console.log(err)
             return res.status(500).json({success: false, err: "Unexpected error occured."})       
         }
     }
@@ -74,6 +75,7 @@ export class UserController {
             await User.findByIdAndRemove(userId);
             res.status(200).json({success: true, message: "User deleted."})
         } catch(err) {
+            console.log(err)
             return res.status(500).json({success: false, err: "Unexpected error occured."})  
         }
     }
