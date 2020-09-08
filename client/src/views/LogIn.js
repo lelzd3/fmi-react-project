@@ -6,17 +6,17 @@ class LogIn extends React.Component {
 		fields: { email: '', password: ''}
 	}
 
-	onInputChange(evt) {
+	onInputChange(event) {
 		this.setState({
 			fields: {
 				...this.state.fields,
-				[evt.target.name]: evt.target.value
+				[event.target.name]: event.target.value
 			}
 		})
 	}
 
-	onFormSubmit(evt) {
-		evt.preventDefault()
+	onFormSubmit(event) {
+		event.preventDefault()
 		httpClient.logIn(this.state.fields).then(user => {
 			this.setState({ fields: { email: '', password: '' } })
 			if(user) {

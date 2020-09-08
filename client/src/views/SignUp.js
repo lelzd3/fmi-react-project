@@ -1,23 +1,22 @@
 import React from 'react'
 import httpClient from '../httpClient'
 
-// sign up form behaves almost identically to log in form. We could create a flexible Form component to use for both actions, but for now we'll separate the two:
 class SignUp extends React.Component {
 	state = {
 		fields: { name: '', email: '', password: ''}
 	}
 
-	onInputChange(evt) {
+	onInputChange(event) {
 		this.setState({
 			fields: {
 				...this.state.fields,
-				[evt.target.name]: evt.target.value
+				[event.target.name]: event.target.value
 			}
 		})
 	}
 
-	onFormSubmit(evt) {
-		evt.preventDefault()
+	onFormSubmit(event) {
+		event.preventDefault()
 		httpClient.signUp(this.state.fields).then(user => {
 			this.setState({ fields: { name: '', email: '', password: '' } })
 			if(user) {
