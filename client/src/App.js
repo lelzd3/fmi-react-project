@@ -13,11 +13,11 @@ import About from './views/About'
 class App extends React.Component {
 	state = { currentUser: httpClient.getCurrentUser() }
 
-	onLoginSuccess(user) {
+	onLoginSuccess = (user) => {
 		this.setState({ currentUser: httpClient.getCurrentUser() })
 	}
 
-	logOut() {
+	logOut = () => {
 		httpClient.logOut()
 		this.setState({ currentUser: null })
 	}
@@ -32,15 +32,15 @@ class App extends React.Component {
 				<Switch>
 
 					<Route path="/login" render={(props) => {
-						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
+						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess} />
 					}} />
 
 					<Route path="/logout" render={(props) => {
-						return <LogOut onLogOut={this.logOut.bind(this)} />
+						return <LogOut onLogOut={this.logOut} />
 					}} />
 
 					<Route path="/signup" render={(props) => {
-						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
+						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess} />
 					}} />
 
 					<Route path="/userhome" render={() => {

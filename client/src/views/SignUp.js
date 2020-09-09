@@ -6,7 +6,7 @@ class SignUp extends React.Component {
 		fields: { name: '', email: '', password: ''}
 	}
 
-	onInputChange(event) {
+	onInputChange = (event) => {
 		this.setState({
 			fields: {
 				...this.state.fields,
@@ -15,7 +15,7 @@ class SignUp extends React.Component {
 		})
 	}
 
-	onFormSubmit(event) {
+	onFormSubmit = (event) => {
 		event.preventDefault()
 		httpClient.signUp(this.state.fields).then(user => {
 			this.setState({ fields: { name: '', email: '', password: '' } })
@@ -33,7 +33,7 @@ class SignUp extends React.Component {
 				<div className='row'>
 					<div className='column column-33 column-offset-33'>
 						<h1>Sign Up</h1>
-						<form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
+						<form onChange={this.onInputChange} onSubmit={this.onFormSubmit}>
 							<input type="text" placeholder="Name" name="name" value={name} />
 							<input type="text" placeholder="Email" name="email" value={email} />
 							<input type="password" placeholder="Password" name="password" value={password} />
