@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { injectable } from "inversify";
-import { MainRouter, UserRouter, PaymentsRouter } from "./routers";
+import { MainRouter, UserRouter, PaymentsRouter, CategoriesRouter } from "./routers";
 import * as path from "path";
 import * as mongoose from "mongoose";
 
@@ -16,7 +16,8 @@ export class App {
 	constructor(
 		private mainRouter: MainRouter,
 		private userRouter: UserRouter,
-		private paymentsRouter: PaymentsRouter
+		private paymentsRouter: PaymentsRouter,
+		private categoriesRouter: CategoriesRouter
 		) {
 		this._app = express();
 		this.config();
@@ -48,6 +49,7 @@ export class App {
 		this.app.use("/api", this.mainRouter.router);
 		this.app.use("/api/users", this.userRouter.router);
 		this.app.use("/api/payments", this.paymentsRouter.router)
+		this.app.use("/api/categories", this.categoriesRouter.router)
 	}
 
 	private setupMongoose() {
