@@ -15,6 +15,7 @@ export class PaymentsRouter {
   	private init(): void {
 		this.router.use(verifyToken)
 
+		this.router.get("/", this.paymentsController.getAllPaymentsForAUser);
 		this.router.post("/create", this.paymentsController.createPayment);
 		this.router.delete("/:id", this.paymentsController.deletePayment);
   	}

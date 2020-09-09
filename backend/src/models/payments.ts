@@ -2,6 +2,7 @@ import { model, Model, Schema, Document } from "mongoose";
 import { generateHash } from "../utils/bcrypt";
 
 export interface IPayment extends Document {
+    userId: String
     name: String
     category: String
     date: Date
@@ -10,6 +11,7 @@ export interface IPayment extends Document {
 }
 
 const PaymentSchema: Schema = new Schema({
+    userId: { type: String, required: true },
     name: { type: String, required: true },
     category: { type: String, required: true },
     date: { type: Date, required: true },

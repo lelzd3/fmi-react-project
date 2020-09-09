@@ -53,6 +53,27 @@ httpClient.logOut = function() {
 	return true
 }
 
+httpClient.createPayment = function(paymentInfo) {
+	return this({ method: 'post', url: '/api/payments/create', data: paymentInfo})
+		.then((serverResponse) => {
+			return serverResponse.data;
+		})
+}
+
+httpClient.getAllPaymentsForAUser = function() {
+	return this({ method: 'get', url: '/api/payments/'})
+		.then((serverResponse) => {
+			return serverResponse.data.data;
+		})
+}
+
+httpClient.deletePayment = function(paymentId) {
+	return this({ method: 'delete', url: `/api/payments/${paymentId}`})
+		.then((serverResponse) => {
+			return serverResponse.data.success;
+		})
+}
+
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.
 httpClient.defaults.headers.common.token = httpClient.getToken()

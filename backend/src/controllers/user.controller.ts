@@ -11,7 +11,7 @@ export class UserController {
 	createUser = async (req: Request, res: Response) => {
 		const userPayload: IUser = req.body;
 		try {
-			const checkExistence = User.findOne({email: userPayload.email});
+			const checkExistence = await User.findOne({email: userPayload.email});
 			if (checkExistence) {
 				return res.status(400).json({success: false, message: "User with that email already exists."});
 			}
