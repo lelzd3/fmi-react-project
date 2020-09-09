@@ -3,11 +3,13 @@ import httpClient from '../httpClient'
 
 class UserHome extends React.Component {
 	state = {
-		rows: []
+		rows: [],
+		categories: []
 	};
 
 	componentDidMount() {
 		const payments = [];
+		const categories = [];
 		httpClient.getAllPaymentsForAUser()
 			.then(allPayments => {
 				allPayments.forEach(payment => {
@@ -24,6 +26,19 @@ class UserHome extends React.Component {
 					rows: [...this.state.rows, ...payments]
 				})
 			})
+		httpClient.getAllCategoriesForAUser()
+		.then(allCategories => {
+			allCategories.forEach(category => {
+				categories.push({
+					_id: category._id,
+					name: category.name
+				})
+			})
+			this.setState({
+				categories: [...this.state.categories, ...categories]
+			})
+		})
+
 	}
 	onInputChange = idx => e => {
 		const { name, value } = e.target;
@@ -40,7 +55,7 @@ class UserHome extends React.Component {
 	onAddRow = () => {
 		const item = {
 			name: "",
-			category: "",
+			category: this.state.categories[0],
 			date: "",
 			price: 0,
 			committed: false
@@ -109,13 +124,14 @@ class UserHome extends React.Component {
 											/>
 										</td>
 										<td>
-											<input
-											type="text"
+										<select 
+											id="mySelect"
 											name="category"
-											value={this.state.rows[idx].category}
-											onChange={this.onInputChange(idx)}
-											className="form-control"
-											/>
+											onChange={this.onInputChange(idx)}>
+											{this.state.categories.map((category) => {
+												return (<option value={category.name}>{category.name}</option>);
+											})}
+										</select>
 										</td>
 										<td>
 											<input
