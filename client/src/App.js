@@ -9,6 +9,7 @@ import SignUp from './views/SignUp'
 import UserHome from './views/UserHome'
 import Home from './views/Home'
 import About from './views/About'
+import CreateCategories from './views/CreateCategories'
 
 class App extends React.Component {
 	state = { currentUser: httpClient.getCurrentUser() }
@@ -46,6 +47,12 @@ class App extends React.Component {
 					<Route path="/userhome" render={() => {
 						return currentUser
 							? <UserHome />
+							: <Redirect to="/login" />
+					}} />
+
+					<Route path="/categories" render={() => {
+						return currentUser
+							? <CreateCategories />
 							: <Redirect to="/login" />
 					}} />
 

@@ -74,6 +74,20 @@ httpClient.deletePayment = function(paymentId) {
 		})
 }
 
+httpClient.createCategories = function(categoryInfo) {
+	return this({ method: 'post', url: '/api/categories/create', data: categoryInfo})
+		.then((serverResponse) => {
+			return serverResponse.data;
+		})
+}
+
+httpClient.getAllCategoriesForAUser = function() {
+	return this({ method: 'get', url: '/api/categories/'})
+		.then((serverResponse) => {
+			return serverResponse.data.data;
+		})
+}
+
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.
 httpClient.defaults.headers.common.token = httpClient.getToken()
