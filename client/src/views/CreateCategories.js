@@ -87,7 +87,7 @@ class CreateCategories extends React.Component {
 											<button
 											onClick={this.onCommitRow(idx)}
 											>
-											Commit Row
+											Commit Category
 											</button>
 										</td> 
 										}
@@ -98,7 +98,7 @@ class CreateCategories extends React.Component {
 						<button 
 							onClick={this.onAddRow}
 							className="btn btn-primary">
-							Add Row
+							Add Category
 						</button>
 						</div>
 					</div>

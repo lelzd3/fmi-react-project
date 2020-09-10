@@ -155,7 +155,7 @@ class UserHome extends React.Component {
 											<button
 											onClick={this.onRemoveSpecificRow(idx)}
 											>
-											Remove
+											Remove Payment
 											</button>
 										</td>
 										{ item.committed === false &&
@@ -163,7 +163,7 @@ class UserHome extends React.Component {
 											<button
 											onClick={this.onCommitRow(idx)}
 											>
-											Commit Row
+											Commit Payment
 											</button>
 										</td> 
 										}
@@ -174,7 +174,7 @@ class UserHome extends React.Component {
 						<button 
 							onClick={this.onAddRow}
 							className="btn btn-primary">
-							Add Row
+							Add Payment
 						</button>
 						</div>
 					</div>
