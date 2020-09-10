@@ -7,7 +7,7 @@ import { Request, Response } from "express";
 export class MainController {
 	public rootURL = (req: Request, res: Response) => {
 		return res.json({
-			message: "Chatbot API is working!"
+			message: "Payments Tracker is working!"
 		});
 	};
 }

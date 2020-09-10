@@ -64,7 +64,7 @@ export class App {
 
 	listen() {
 		this.app.listen(PORT, () => {
-			console.log("Chatbot API is listening on port " + PORT);
+			console.log("Payments Tracker is listening on port " + PORT);
 		});
 	}
 }
